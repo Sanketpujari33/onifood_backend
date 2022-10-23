@@ -5,7 +5,7 @@ const app = express();
 var cors=require('cors');
 app.use(cors());
 
-app.use(express.static('/public/build'));
+app.use(express.static('public/build'));
 
 app.use(express.json());
 
