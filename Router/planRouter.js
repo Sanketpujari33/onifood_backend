@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 const planRouter = express.Router();
 const { protectRoute, isAuthorised } = require('../controller/authController');
-const { getAllPlans, getPlan, createPlan, updatePlan, deletePlan, topTherePlans } = require('../controller/planController')
+const { getAllPlans, getPlan, createPlan, updatePlan, deletePlan, top3Plans } = require('../controller/planController')
 
 
 //all plans open for user
@@ -12,9 +12,7 @@ planRouter
 .get(getAllPlans)
 
 //top3Plan
-planRouter
-.route('/topThreePlan')
-.get(topTherePlans)
+planRouter.route('/top3').get(top3Plans)
 
 // own plan -> login neccessary
 planRouter.use(protectRoute);

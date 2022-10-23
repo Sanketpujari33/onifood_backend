@@ -112,7 +112,7 @@ module.exports.updatePlan = async function updatePlan(req, res) {
 }
 
 // get top 3 plans 
-module.exports.topTherePlans = async function topTherePlans(req, res) {
+module.exports.top3Plans = async function top3Plans(req, res) {
     try {
         const plans = await planModels.find().sort({ ratingsAverage: -1}).limit(3);
         if (plans) {
