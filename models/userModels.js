@@ -46,7 +46,7 @@ const userSchema = mongoose.Schema({
     },
     profileImage:{
         type:String,
-        default:'img/users/default.jpng'
+        default:'/public/users/default.webp'
     },
     resetToken:String,
 });
