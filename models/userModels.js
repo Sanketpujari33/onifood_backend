@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const emailValidator = require('email-validator');
 const createSecretKey = require('crypto');
 // const bcrypt = require('bcrypt');
-const db_link = 'mongodb://localhost:27017/FoodApp';
+const db_link = 'mongodb+srv://onifood:vgBtAUWiaWBWz2hb@cluster0.b2oreuv.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(db_link)
     .then((db) => {
         // console.log(db);
