@@ -1,16 +1,16 @@
 {
  
-  "name": "onifood",
+  "name": "onifood_backend",
   "version": "1.0.0",
   "description": "this is backend server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node onifood_backend/server.js",
+    "dev": "nodemon onifood_backend/server.js"
   },
   "keywords": [],
-  "author": "Sanket",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
