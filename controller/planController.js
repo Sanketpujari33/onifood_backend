@@ -2,120 +2,169 @@ const planModel = require("../models/planModel");
 
 module.exports.getAllPlans = async function getAllPlans(req, res) {
   try {
-    let plans = await planModel.find();
+    let plans = await planModels.find();
     if (plans) {
       return res.json({
-        message: "all plans retrieved",
-        data: plans,
+        massage: 'all plans reteieved',
+        data: plans
       });
     } else {
       return res.json({
-        message: "plans not found",
+        massage: 'plans not found',
       });
     }
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
     });
   }
-};
+}
 
 module.exports.getPlan = async function getPlan(req, res) {
   try {
     let id = req.params.id;
-    console.log(id);
-    let plan = await planModel.findById(id);
+    let plan = await planModels.findById(id);
     if (plan) {
-      console.log(plan);
       return res.json({
-        message: "plan retrieved",
+        massage: 'plans reteieved',
         data: plan,
       });
     } else {
       return res.json({
-        message: "plan not found",
+        massage: 'plan not found',
       });
     }
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
     });
   }
-};
+}
 
 module.exports.createPlan = async function createPlan(req, res) {
   try {
     let planData = req.body;
-    let createdPlan = await planModel.create(planData);
+    let createPlan = await planModels.create(planData);
     return res.json({
-      message: "plan created succesfully",
-      data: createdPlan,
+      message: 'plan created succesfully',
+      data: createPlan,
     });
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.message
     });
   }
-};
+}
+
 
 module.exports.deletePlan = async function deletePlan(req, res) {
   try {
     let id = req.params.id;
-    let deletedPlan = await planModel.findByIdAndDelete(id);
-    return res.json({
-      message: "plan deleted succesfully",
-      data: deletedPlan,
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
+    let plan = await planModels.findById(id);
+    if (plan) {
+      return res.json({
+        massage: 'plans reteieved',
+        data: plan,
+      });
+    } else {
+      return res.json({
+        massage: 'plan not found',
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
     });
   }
-};
+}
+
+module.exports.createPlan = async function createPlan(req, res) {
+  try {
+    let planData = req.body;
+    let createPlan = await planModels.create(planData);
+    return res.json({
+      message: 'plan created succesfully',
+      data: createPlan,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.message
+    });
+  }
+}
+
+module.exports.deletePlan = async function deletePlan(req, res) {
+  try {
+    let id = req.params.id;
+    let deletePlan = await planModels.findById(id);
+    if (deletePlan) {
+      let deleteData = await planModels.findByIdAndDelete(id);
+      return res.json({
+        message: 'plan delete succesfully',
+        data: deleteData
+      });
+    } else {
+      return res.json({
+        message: 'plan not found',
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
+    });
+  }
+}
 
 module.exports.updatePlan = async function (req, res) {
   try {
     let id = req.params.id;
-    let dataToBeUpdated = req.body;
-    console.log(id);
-    console.log(dataToBeUpdated);
-    let keys = [];
-    for (let key in dataToBeUpdated) {
-      keys.push(key);
+    let plan = await planModels.findById(id);
+    if (plan) {
+      let dataToBeUpdated = req.body;
+      const keys = [];
+      for (key in dataToBeUpdated) {
+        keys.push(key);
+      }
+      for (let index = 0; index < keys.length; index++) {
+        plan[keys[index]] = dataToBeUpdated[keys[index]];
+      }
+      //doc 
+      await plan.save();
+      return res.json({
+        massage: "plan update succesfully",
+        data: plan
+      });
+    } else {
+      return res.json({
+        massage: "plan not present"
+      });
     }
-    let plan = await planModel.findById(id);
-    for (let i = 0; i < keys.length; i++) {
-      plan[keys[i]] = dataToBeUpdated[keys[i]];
-    }
-    console.log(plan);
-    //doc
-    await plan.save();
-    return res.json({
-        message:'plan updated succesfully',
-        data:plan
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
+
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
     });
   }
-};
+}
 
 //get top 3 plans
 
-module.exports.top3Plans=async function top3Plans(req,res){ 
-    try{
-        const plans=await planModel.find().sort({
-            ratingsAverage:-1
-        }).limit(3);
-        return res.json({
-            message:'top3 plans',
-            data:plans
-        })
+module.exports.top3Plans = async function top3Plans(req, res) {
+  try {
+    const plans = await planModels.find().sort({ ratingsAverage: -1 }).limit(3);
+    if (plans) {
+      return res.json({
+        massage: 'Top There plans',
+        data: plans
+      });
+    } else {
+      return res.json({
+        massage: "plans are not present"
+      });
     }
-    catch(err){
-        res.status(500).json({
-            message: err.message,
-          });
-    }
+  } catch (error) {
+    return res.status(500).json({
+      massage: error.massage
+    });
+  }
 }

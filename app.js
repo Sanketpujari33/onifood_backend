@@ -25,10 +25,10 @@ app.listen(port,function(){
 app.use(cookieParse());
 
 //mini app
-const userRouter = require('./Routers/userRouter');
-const planRouter = require('./Routers/planRouter');
-const reviewRouter = require('./Routers/reviewRouter');
-const bookingRouter=require('./Routers/bookingRouter');
+const userRouter = require('./Router/userRouter');
+const planRouter = require('./Router/planRouter');
+const reviewRouter = require('./Router/reviewRouter');
+const bookingRouter=require('./Router/bookingRouter');
 
 //middleware Function post , front->json
 //base route , router to use

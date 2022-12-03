@@ -13,16 +13,16 @@ mongoose.connect(db_link, {
 .catch(function (err) {
   console.log(err);
 });
-const planSchema = new mongoose.Schema({
+const planSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
         unique: true,
-        maxlength: [20, "plan name should not exceed more than 20 characters"],
+        maxLength: [20, "plan name should not exceed more than 20 characters"]
     },
     duration: {
         type: Number,
-        required: true,
+        required: true
     },
     price: {
         type: Number,
@@ -33,13 +33,14 @@ const planSchema = new mongoose.Schema({
     },
     discount: {
         type: Number,
-        validate: [
-            function () {
-                return this.discount < 100;
-            },
-            "dicount should not exceed price",
-        ],
+        validate: [function () {
+            return this.discount < 100;
+        }, "discount should not exceed price"],
     },
+    Reviews: {
+        type: Number,
+        default:0,
+    }
 });
 
 // model
