@@ -1,6 +1,6 @@
 const express = require('express');
 const { model } = require('mongoose');
-const userModel = require('../models/userModels');
+const userModel = require('../models/userModel');
 
 
 module.exports.getUser = async function getUser(req, res) {

@@ -1,7 +1,10 @@
 //Mongose on through connect mongodb
 const mongoose = require('mongoose');
-const db_link = 'mongodb+srv://onifood:vgBtAUWiaWBWz2hb@cluster0.b2oreuv.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(db_link)
+const { db_link } = require("../secrets");
+mongoose.connect(db_link, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then((db) => {
         console.log('review db conected');
     })
@@ -9,35 +12,32 @@ mongoose.connect(db_link)
         console.log(err);
     })
 
-const reviewSchema =new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
     review: {
         type: String,
-        required: [true, 'review is required'],
+        required: [true, 'review is required']
     },
-
     rating: {
         type: Number,
         min: 1,
         max: 10,
-        required: [true, 'rating is required'],
+        required: [true, 'rating is required']
     },
-
     createdAt: {
         type: Date,
-        default: Date.now(),
+        default: Date.now()
     },
-    user:{
+    user: {
         type: mongoose.Schema.ObjectId,
         ref: 'userModel',
-        required: [true, 'review must belong to a user'],
+        required: [true, 'review must belong to a user']
     },
-    plan:{
+    plan: {
         type: mongoose.Schema.ObjectId,
         ref: 'planModel',
-        required: [true, 'review must belong to a user'],
+        required: [true, 'review must belong to a plan']
     }
 });
-
 //find findById, findOne
 reviewSchema.pre(/^find/, function (next) {
     this.populate({
@@ -46,5 +46,7 @@ reviewSchema.pre(/^find/, function (next) {
     }).populate("plan");
     next();
 });
+
 const reviewModel = mongoose.model('reviewModel', reviewSchema);
+
 module.exports = reviewModel;
