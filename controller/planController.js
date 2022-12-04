@@ -2,7 +2,8 @@ const planModel = require("../models/planModel");
 
 module.exports.getAllPlans = async function getAllPlans(req, res) {
   try {
-    let plans = await planModels.find();
+    let plans = await planModel.find();
+  console.log(plans);
     if (plans) {
       return res.json({
         massage: 'all plans reteieved',
@@ -44,7 +45,7 @@ module.exports.getPlan = async function getPlan(req, res) {
 module.exports.createPlan = async function createPlan(req, res) {
   try {
     let planData = req.body;
-    let createPlan = await planModels.create(planData);
+    let createPlan = await planModel.create(planData);
     return res.json({
       message: 'plan created succesfully',
       data: createPlan,
@@ -60,7 +61,7 @@ module.exports.createPlan = async function createPlan(req, res) {
 module.exports.deletePlan = async function deletePlan(req, res) {
   try {
     let id = req.params.id;
-    let plan = await planModels.findById(id);
+    let plan = await planModel.findById(id);
     if (plan) {
       return res.json({
         massage: 'plans reteieved',
@@ -81,7 +82,7 @@ module.exports.deletePlan = async function deletePlan(req, res) {
 module.exports.createPlan = async function createPlan(req, res) {
   try {
     let planData = req.body;
-    let createPlan = await planModels.create(planData);
+    let createPlan = await planModel.create(planData);
     return res.json({
       message: 'plan created succesfully',
       data: createPlan,
@@ -96,9 +97,9 @@ module.exports.createPlan = async function createPlan(req, res) {
 module.exports.deletePlan = async function deletePlan(req, res) {
   try {
     let id = req.params.id;
-    let deletePlan = await planModels.findById(id);
+    let deletePlan = await planModel.findById(id);
     if (deletePlan) {
-      let deleteData = await planModels.findByIdAndDelete(id);
+      let deleteData = await planModel.findByIdAndDelete(id);
       return res.json({
         message: 'plan delete succesfully',
         data: deleteData
@@ -118,7 +119,7 @@ module.exports.deletePlan = async function deletePlan(req, res) {
 module.exports.updatePlan = async function (req, res) {
   try {
     let id = req.params.id;
-    let plan = await planModels.findById(id);
+    let plan = await planModel.findById(id);
     if (plan) {
       let dataToBeUpdated = req.body;
       const keys = [];
@@ -151,7 +152,7 @@ module.exports.updatePlan = async function (req, res) {
 
 module.exports.top3Plans = async function top3Plans(req, res) {
   try {
-    const plans = await planModels.find().sort({ ratingsAverage: -1 }).limit(3);
+    const plans = await planModel.find().sort({ ratingsAverage: -1 }).limit(3);
     if (plans) {
       return res.json({
         massage: 'Top There plans',

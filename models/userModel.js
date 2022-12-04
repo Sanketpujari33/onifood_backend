@@ -1,3 +1,5 @@
+const dotenv=require('dotenv');
+dotenv.config();
 //mongoDB
 const mongoose=require('mongoose');
 const emailValidator=require('email-validator');

@@ -1,3 +1,5 @@
+const dotenv=require('dotenv');
+dotenv.config();
 //Mongose on through connect mongodb
 const mongoose = require('mongoose');
 const { db_link } = require("../secrets");

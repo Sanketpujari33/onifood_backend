@@ -1,7 +1,10 @@
+const dotenv=require('dotenv');
+dotenv.config();
 //Mongose on through connect mongodb
 const mongoose = require('mongoose');
 const { db_link } = require("../secrets");
-mongoose.connect(db_link, {
+
+mongoose.connect(db_link,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
