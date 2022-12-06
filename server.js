@@ -2,8 +2,9 @@ const _ = require('lodash');
 const cookieParse = require('cookie-parser');
 const express = require('express');
 const app = express();
+const createError=require('http-errors');
 var cors=require('cors');
-
+app.use(express.urlencoded({extended: true}))
 const morgan=require('morgan')
 
 require('dotenv').config()

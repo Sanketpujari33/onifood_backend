@@ -1,5 +1,3 @@
-const express = require('express');
-const { model } = require('mongoose');
 const userModel = require('../models/userModel');
 
 

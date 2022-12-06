@@ -1,5 +1,5 @@
 //stripe
-module.exports = { JWT_KEY: "fhgadsvhashifijdgshddoihqwi9hbdasjdioqwbgd" }
+module.exports.JWT_KEY="frbfywg8374bfuiwebf";
 
 module.exports.SK = "sk_test_pL1X84CZrOSOYRkyyvKuCwR000a36t5jwK";
 //mongodb
