@@ -24,7 +24,7 @@ module.exports.getAllPlans = async function getAllPlans(req, res) {
 module.exports.getPlan = async function getPlan(req, res) {
   try {
     let id = req.params.id;
-    let plan = await planModels.findById(id);
+    let plan = await planModel.findById(id);
     if (plan) {
       return res.json({
         massage: 'plans reteieved',

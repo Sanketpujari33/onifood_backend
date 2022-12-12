@@ -15,7 +15,7 @@ module.exports.sendMail=async function sendMail(str,data){
         secure: false, // true for 465, false for other ports
         auth: {
             user: 'sanketpujari33@gmail.com',// generated ethereal user
-            pass: 'tjeexqfmkbokhwuc'// generated ethereal password
+            pass: 'vliluyzpapzzufsh'// generated ethereal password
         },
     });
     var Osubject,Otext,Ohtml;

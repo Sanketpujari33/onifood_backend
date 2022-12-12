@@ -12,7 +12,7 @@ planRouter.route('/allPlans')
 planRouter.route('/top3').get(top3Plans)
 
 // own plan -> login neccessary
-planRouter.use(protectRoute);
+// planRouter.use(protectRoute);
 planRouter.route('/plan/:id')
 .get(getPlan);
 

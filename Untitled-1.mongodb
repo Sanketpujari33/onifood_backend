@@ -11,7 +11,7 @@ use(database);
 db.createCollection(collection);
 
 // The prototype form to create a collection:
-/* db.createCollection( <name>,
+db.createCollection( <name>,
   {
     capped: <boolean>,
     autoIndexId: <boolean>,
@@ -34,7 +34,7 @@ db.createCollection(collection);
     expireAfterSeconds: <number>,
     clusteredIndex: <document>, // Added in MongoDB 5.3
   }
-)*/
+)
 
 // More information on the `createCollection` command can be found at:
 // https://www.mongodb.com/docs/manual/reference/method/db.createCollection/
