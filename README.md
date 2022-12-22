@@ -1,5 +1,4 @@
-# onifood_backend
-# API Setup
+# onifood_backend API Setup
 
 This is a initializing starting point for making an API.
 
@@ -68,4 +67,3 @@ Detailed info for serialized examples
 ```text
 npm install axios
 ```
-
