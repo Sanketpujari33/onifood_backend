@@ -61,7 +61,7 @@ Detailed info for serialized examples
 - Return user data (must login beforehand and use token) : GET /users/profile
 
 
-# How to Use the Spotify API
+# How to Use the onifood_backend API
 
 - [ ] Install `axios`
 ```text
